@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM Prompts Guide - Phonetics & Phonology</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Inter', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        dark: '#1E293B',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for code blocks */
+        pre::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        pre::-webkit-scrollbar-track {
+            background: #0f172a; 
+            border-radius: 8px;
+        }
+        pre::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 8px;
+        }
+        pre::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary selection:text-white">
+
+    <main class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                Smart Revision with <span class="text-primary">NotebookLM</span>
+            </h1>
+            <h2 class="text-2xl font-bold text-slate-700 mb-6">Phonetics and Phonology Course</h2>
+            
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 text-left leading-relaxed">
+                <p class="text-lg text-slate-600 mb-2">
+                    Since your file contains <strong>Exam-Style Practice Tasks</strong> with answers and final reviews, the best approach is to use NotebookLM as a professor testing and correcting you.
+                </p>
+                <p class="text-lg text-slate-600 font-semibold text-primary">
+                    Use these prompts one by one in the NotebookLM Chat.
+                </p>
+            </div>
+        </header>
+
+        <div id="prompts-container" class="space-y-8">
+            <!-- Prompts will be injected here via JavaScript -->
+        </div>
+
+        <footer class="mt-16 bg-blue-50 border border-blue-100 rounded-2xl p-8 shadow-sm">
+            <h3 class="text-2xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Best Usage Order:
+            </h3>
+            <ul class="list-disc list-inside text-blue-800 text-lg space-y-3 font-medium">
+                <li>Start with <strong>Prompt 1</strong> (Diagnostic Test).</li>
+                <li>Then use the prompts for the topics you made mistakes in (Prompts 2 to 11).</li>
+                <li>After that, use <strong>Prompt 12</strong> as a full mock exam.</li>
+                <li>Use <strong>Prompt 13</strong> to correct your answers and evaluate your level.</li>
+                <li>Finally, use <strong>Prompt 15</strong> for a quick night-before-the-exam revision.</li>
+            </ul>
+        </footer>
+
+    </main>
+
+    <script>
+        const promptsData = [
+            {
+                id: 1,
+                title: "Prompt 1 — Quick Diagnostic Test",
+                text: `Based only on the uploaded Phonetics and Phonology study guide, give me a diagnostic test to check my level before the exam.
+
+Make the test cover:
+1. onset, nucleus, coda
+2. open and closed syllables
+3. heavy and light syllables
+4. word stress
+5. suffix-based stress
+6. IPA vowels and diphthongs
+7. distinctive features
+8. syllabification and Maximal Onset Principle
+9. phonotactics
+10. assimilation, elision, and insertion
+
+Give me 20 questions total.
+Do not give the answers immediately.
+Wait for my answers first.
+After I answer, correct me slowly and explain every mistake in simple English.`
+            },
+            {
+                id: 2,
+                title: "Prompt 2 — Onset / Nucleus / Coda Practice",
+                text: `Train me for exam questions about onset, nucleus, coda, and rhyme.
+
+Use words from the uploaded study guide and also create similar words.
+
+First, explain the method:
+1. find the vowel or diphthong
+2. identify the nucleus
+3. identify the consonants before it as onset
+4. identify the consonants after it as coda
+5. identify the rhyme as nucleus + coda
+
+Then give me 15 practice words.
+Do not give the answers immediately.
+After I answer, correct each word in a table:
+Word | Correct onset | Correct nucleus | Correct coda | My mistake | Explanation
+
+Explain slowly and simply.`
+            },
+            {
+                id: 3,
+                title: "Prompt 3 — Syllable Types Practice",
+                text: `Help me practise syllable types for my exam.
+
+Focus on:
+minimum syllable
+open syllable
+closed syllable
+syllabic consonant
+
+Give me a simple reminder of the rules first.
+Then give me 20 examples and ask me to classify each one.
+
+Do not give the answers until I try.
+After I answer, correct me and explain why each syllable is open, closed, minimum, or syllabic consonant.
+Use simple English and repeat the important rules.`
+            },
+            {
+                id: 4,
+                title: "Prompt 4 — Heavy / Light Syllables Practice",
+                text: `Train me on heavy and light syllables using the uploaded guide.
+
+First, explain the rule very simply:
+CV = light
+CVC = heavy
+CVV = heavy
+diphthong = heavy
+onset does not count in syllable weight
+
+Then test me with 20 syllables or words.
+Ask me to decide if each one is heavy or light and to give the reason.
+
+Do not show the answers first.
+After I answer, correct me slowly.
+For every answer, explain whether the syllable is heavy or light and why.
+Focus on exam-style explanations.`
+            },
+            {
+                id: 5,
+                title: "Prompt 5 — Word Stress Practice",
+                text: `Prepare me for word stress exam questions.
+
+Use the uploaded study guide only.
+
+Review these rules briefly:
+1. two-syllable nouns usually have first-syllable stress
+2. two-syllable adjectives usually have first-syllable stress
+3. two-syllable verbs often have second-syllable stress
+4. noun-verb stress shift
+5. suffix-based stress
+6. compound stress
+
+Then give me 25 words.
+Ask me to mark the primary stress using capital letters, for example: PREsent or preSENT.
+
+Do not give answers immediately.
+After I answer, correct me and explain the rule behind each answer.
+Pay special attention to words like present, object, record, permit, democracy, photography, economic, formation, employee, engineer, bedroom, understand, myself, thirteen, and thirty.`
+            },
+            {
+                id: 6,
+                title: "Prompt 6 — Suffix Stress Practice",
+                text: `I want focused practice on suffix-based stress.
+
+Use only the uploaded study guide.
+
+Test me on these suffixes:
+-ic
+-tion / -sion
+-cy / -ty / -phy / -gy / -al
+-ee / -eer / -ese / -ette / -ique / -oon
+-ly
+
+First, give me a very simple table of the rules.
+Then give me 20 words and ask me to mark the stressed syllable.
+
+Do not give the answers first.
+After I answer, correct me and explain which suffix rule applies.
+At the end, give me a short memory trick for these suffix rules.`
+            },
+            {
+                id: 7,
+                title: "Prompt 7 — IPA Vowels and Diphthongs Practice",
+                text: `Train me on IPA vowels and diphthongs for the exam.
+
+Use examples from the uploaded study guide.
+
+First, review the main vowel symbols and diphthongs:
+/iː/, /ɪ/, /e/, /æ/, /ɑː/, /ɜː/, /ɒ/, /ɔː/, /uː/, /ʊ/, /ʌ/, /ə/
+/eɪ/, /aɪ/, /aʊ/, /əʊ/, /ɔɪ/, /ɪə/, /eə/, /ʊə/
+
+Then test me with words.
+Ask me to identify the vowel or diphthong in each word.
+
+Do not give answers immediately.
+After I answer, correct me in a table:
+Word | Correct IPA vowel/diphthong | Explanation | Common spelling trap
+
+Explain slowly because IPA is difficult for me.`
+            },
+            {
+                id: 8,
+                title: "Prompt 8 — Distinctive Features Practice",
+                text: `Help me practise distinctive features for my Phonetics and Phonology exam.
+
+Focus on these features:
+[syllabic]
+[consonantal]
+[sonorant]
+[voice]
+[continuant]
+[nasal]
+[strident]
+[labial]
+[coronal]
+[anterior]
+[high]
+[front]
+[tense]
+
+First, explain each feature in very simple words.
+Then test me on these sounds:
+/s/
+/m/
+/w/
+/iː/
+/j/
+/p/
+/z/
+/n/
+
+Ask me to give feature values using + or -.
+Do not give the answers first.
+After I answer, correct me slowly and explain why each sound has each feature.
+Use a clear table.`
+            },
+            {
+                id: 9,
+                title: "Prompt 9 — Syllabification and MOP Practice",
+                text: `Train me on syllabification and the Maximal Onset Principle.
+
+Use only the uploaded guide.
+
+First, explain the step-by-step method:
+1. find the nuclei
+2. put one nucleus in each syllable
+3. assign consonants before the first nucleus to the onset
+4. between vowels, maximize the onset of the next syllable if the cluster is legal in English
+5. if a short stressed vowel needs a coda, close the syllable
+6. assign final consonants to the coda
+
+Then give me 15 words to divide into syllables.
+Include examples similar to:
+agree
+reflect
+basket
+extra
+faster
+deliberation
+atlas
+
+Do not give answers immediately.
+After I answer, correct me and explain the role of MOP and phonotactics in every word.`
+            },
+            {
+                id: 10,
+                title: "Prompt 10 — Phonotactics Practice",
+                text: `Prepare me for phonotactics questions.
+
+Use only the uploaded study guide.
+
+Explain what phonotactics means in simple English.
+Then test me on whether these clusters are possible English word-initial onsets:
+/st/
+/sp/
+/sk/
+/tr/
+/str/
+/spr/
+/skr/
+/tl/
+/dl/
+
+Ask me to answer:
+possible or not possible?
+Then ask me to explain one answer using sonority or English phonotactics.
+
+Do not give answers first.
+After I answer, correct me and give exam-style explanations.`
+            },
+            {
+                id: 11,
+                title: "Prompt 11 — Phonological Processes Practice",
+                text: `Train me on phonological processes for the exam.
+
+Focus on:
+assimilation
+elision
+insertion / epenthesis
+
+First, explain each process simply.
+Then give me 15 examples and ask me to identify the process.
+
+Use examples similar to:
+ten boys → tem boys
+next day → nex day
+film → filum
+did you → didja
+input → imPut
+camera → camra
+
+Do not give the answers immediately.
+After I answer, correct me using this format:
+Example | Process | Sound affected | Environment | Simple explanation
+
+Explain slowly and focus on how to write a good exam answer.`
+            },
+            {
+                id: 12,
+                title: "Prompt 12 — Full Mock Exam",
+                text: `Create a full mock exam based only on the uploaded Phonetics and Phonology study guide.
+
+The exam should include:
+Section A: onset, nucleus, coda
+Section B: syllable types
+Section C: heavy and light syllables
+Section D: word stress
+Section E: IPA vowels and diphthongs
+Section F: distinctive features
+Section G: syllabification and MOP
+Section H: phonotactics
+Section I: phonological processes
+
+Make the exam realistic and similar to university exam questions.
+Give me 40 marks total.
+Do not give the answer key yet.
+Wait for my answers.
+After I answer, grade me out of 40 and explain exactly what I need to revise.`
+            },
+            {
+                id: 13,
+                title: "Prompt 13 — Grade My Answers Like a Professor",
+                text: `Correct my answers like an examiner.
+
+For each answer:
+1. say if it is correct or incorrect
+2. give the correct answer
+3. explain my mistake in simple English
+4. tell me the rule I should remember
+5. give me one similar practice example
+
+At the end, give me:
+- my strongest topics
+- my weakest topics
+- what I should revise next
+- 5 urgent rules to memorize before the exam`
+            },
+            {
+                id: 14,
+                title: "Prompt 14 — Revision Plan Based on Mistakes",
+                text: `Based on my mistakes in the previous exercises, create a personalized revision plan for me.
+
+Divide the plan into:
+1. topics I understand well
+2. topics I partially understand
+3. topics I do not understand
+4. what I should revise first
+5. what I should practise most
+6. what I should memorize before the exam
+
+Make the plan realistic for a student who has little time and is nervous.
+Focus only on the uploaded Phonetics and Phonology study guide.`
+            },
+            {
+                id: 15,
+                title: "Prompt 15 — Night-Before-Exam Revision",
+                text: `Give me a last-minute revision session for the Phonetics and Phonology exam.
+
+Use only the uploaded study guide.
+
+Focus on the most important exam topics:
+syllable structure
+onset, nucleus, coda, rhyme
+open and closed syllables
+heavy and light syllables
+word stress
+suffix stress
+IPA vowels and diphthongs
+distinctive features
+MOP
+phonotactics
+assimilation, elision, insertion
+
+For each topic:
+1. give me the rule
+2. give me one easy example
+3. give me one common mistake
+4. give me one quick exam question with answer
+
+Make it clear, calm, and easy to revise quickly.`
+            }
+        ];
+
+        const container = document.getElementById('prompts-container');
+
+        promptsData.forEach((prompt, index) => {
+            const card = document.createElement('div');
+            card.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden transition-all hover:shadow-md";
+            
+            card.innerHTML = `
+                <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                    <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                        <span class="bg-primary text-white text-sm w-8 h-8 flex items-center justify-center rounded-full shadow-sm">${prompt.id}</span>
+                        ${prompt.title}
+                    </h3>
+                </div>
+                <div class="relative group">
+                    <button 
+                        onclick="copyToClipboard(this, 'prompt-text-${prompt.id}')"
+                        class="absolute top-4 right-4 bg-slate-700 hover:bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 opacity-90 group-hover:opacity-100 z-10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900"
+                        title="Copy to clipboard">
+                        <svg class="w-4 h-4 copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span class="btn-text">Copy</span>
+                    </button>
+                    <div class="bg-slate-900 p-6 pt-14 sm:pt-6 pb-6 overflow-x-auto">
+                        <pre><code id="prompt-text-${prompt.id}" class="text-slate-300 font-mono text-sm leading-relaxed whitespace-pre-wrap font-medium">${prompt.text}</code></pre>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        function copyToClipboard(btnElement, textElementId) {
+            const textElement = document.getElementById(textElementId);
+            const textToCopy = textElement.innerText;
+
+            // Using execCommand as requested for maximum compatibility in iframes
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            // Prevent scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const icon = btnElement.querySelector('.copy-icon');
+                const textSpan = btnElement.querySelector('.btn-text');
+                
+                // Save original HTML
+                const originalIconSVG = icon.outerHTML;
+                
+                // Change to Checkmark
+                icon.outerHTML = `<svg class="w-4 h-4 check-icon text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+                textSpan.innerText = "Copied!";
+                btnElement.classList.replace('bg-slate-700', 'bg-slate-800');
+                btnElement.classList.remove('hover:bg-primary');
+
+                // Revert back after 2 seconds
+                setTimeout(() => {
+                    const newIcon = btnElement.querySelector('.check-icon');
+                    if(newIcon) newIcon.outerHTML = originalIconSVG;
+                    textSpan.innerText = "Copy";
+                    btnElement.classList.replace('bg-slate-800', 'bg-slate-700');
+                    btnElement.classList.add('hover:bg-primary');
+                }, 2000);
+
+            } catch (err) {
+                console.error('Oops, unable to copy', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>
